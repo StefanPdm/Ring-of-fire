@@ -3,13 +3,24 @@
   width: 100vw;
   height: 100vh;
   max-height: 100%;
-  background-image: url("/assets/img/board.jpg");
+  background-image: url("/assets/img/green_Background.jpeg");
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
+.logo {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  z-index: 1;
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 9px 7px 10px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+}
 .card-stack {
   position: relative;
   img {
@@ -24,12 +35,14 @@
       scale: 1.05;
       transition: all 0.2s ease-in-out;
     }
+
+    &:nth-child(1) {
+      box-shadow: -2px -2px 8px 8px rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
 .pick-card {
-  // transform: translate(0, 0) !important;
-  // transform-origin: center !important;
   animation: pick-card-animation 1s linear forwards;
   cursor: pointer;
 }
@@ -48,4 +61,37 @@
   100% {
     transform: scale(1.1) translate(200px, -300px) rotate(10deg);
   }
+}
+
+.played-cards {
+  // position: absolute;
+  left: 25px;
+  top: -7px;
+  transform-origin: left top;
+  transform: scale(1.1) translate(200px, -300px) rotate(10deg);
+}
+
+.played-cards:not(.played-cards ~ .played-cards) {
+  box-shadow: -2px -2px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.player-position {
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+}
+
+.btn-add {
+  position: absolute;
+  right: 2%;
+  bottom: 5%;
+  background-color: transparent;
+  border: 1px solid hsl(39, 14%, 25%);
+  backdrop-filter: blur(2px);
+  color: white;
+  box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    7px 1px 10px 7px rgba(255, 255, 255, 0.31) inset;
+  -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    4px 1px 10px 4px rgba(255, 255, 255, 0.31) inset;
+  -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
 }

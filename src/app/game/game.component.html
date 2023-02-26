@@ -1,11 +1,23 @@
+<app-player *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + i * 85}"
+  class="player-position" [name]="player"></app-player>
+<div class="logo">Ring Of Fire</div>
 <div class="field">
   <div class="card-stack">
-    <img *ngFor="let card of [1,2,3,4]; let i = index" src="assets/img/cards/card_cover.png" alt=""
+    <img *ngFor="let card of [1,2,3,4]; let i = index" src="assets/img/cards/gray_back.png" alt=""
       [ngStyle]="{'left.px': i * 3, 'top.px': i *3}">
-    <img (click)="takeCard()" src="assets/img/cards/card_cover.png" style="left: 12px; top: 12px;"
+    <img (click)="takeCard()" src="assets/img/cards/gray_back.png" style="left: 12px; top: 12px;"
       alt="">
+
+    <img class="played-cards" *ngFor="let card of game.playedCards"
+      src="assets/img/cards/{{card}}.png" alt="">
+
     <img *ngIf="pickCardAnimation" (click)="takeCard()" [class.pick-card]="pickCardAnimation"
       src="assets/img/cards/{{currentCard}}.png" style="left: 12px; top: 12px;" alt="">
 
+
   </div>
 </div>
+
+<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -16,3 +17,6 @@ textarea,
 select {
   font: inherit;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
