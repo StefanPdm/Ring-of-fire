@@ -9,4 +9,5 @@ import { GameComponent } from '../game/game.component';
 })
 export class PlayerComponent {
   @Input() name: any;
+  @Input() activePlayer: boolean = false;
 }

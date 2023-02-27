@@ -1,0 +1,16 @@
+.info-card {
+  position: absolute;
+  font-weight: 300;
+  bottom: 5%;
+  left: 2%;
+  right: calc(4% + 55px);
+  background-color: transparent;
+  border: 1px solid hsl(39, 14%, 25%);
+  backdrop-filter: blur(2px);
+  color: rgb(190, 238, 172);
+  box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    7px 1px 10px 7px rgba(255, 255, 255, 0.31) inset;
+  -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    4px 1px 10px 4px rgba(255, 255, 255, 0.31) inset;
+  -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
+}

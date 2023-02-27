@@ -13,14 +13,22 @@
 
 .logo {
   position: absolute;
-  top: 3%;
+  display: flex;
+  align-items: center;
+  top: 50px;
   left: 3%;
   z-index: 1;
-  color: white;
+  height: 2rem;
+  width: 300px;
+  color: rgba(255, 255, 255, 0.3);
   font-size: 2.5rem;
-  text-shadow: 9px 7px 10px rgba(0, 0, 0, 1);
+  line-height: 2.5rem;
+  font-weight: bold;
+  text-shadow: 9px 7px 10px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
+  // -webkit-text-stroke: 0.1px black;
 }
+
 .card-stack {
   position: relative;
   img {
@@ -59,16 +67,19 @@
   }
 
   100% {
-    transform: scale(1.1) translate(200px, -300px) rotate(10deg);
+    transform: scale(1.1) translate(-200px, -300px) rotate(-10deg);
+    // transform: scale(1.1) rotate(10deg);
+    // top: 0;
+    // right: 300px;
   }
 }
 
 .played-cards {
   // position: absolute;
-  left: 25px;
-  top: -7px;
+  left: -12px;
+  top: 15px;
   transform-origin: left top;
-  transform: scale(1.1) translate(200px, -300px) rotate(10deg);
+  transform: scale(1.1) translate(-200px, -300px) rotate(-10deg);
 }
 
 .played-cards:not(.played-cards ~ .played-cards) {
