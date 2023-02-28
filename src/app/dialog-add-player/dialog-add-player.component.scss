@@ -1,0 +1,19 @@
+.add-dialog {
+  // position: absolute;
+  // right: 2%;
+  // bottom: 5%;
+  background-color: transparent !important;
+  border: 1px solid hsl(39, 14%, 25%);
+  border-radius: 50px;
+  backdrop-filter: blur(2px);
+  color: white;
+  box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    7px 1px 10px 7px rgba(255, 255, 255, 0.31) inset;
+  -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+    4px 1px 10px 4px rgba(255, 255, 255, 0.31) inset;
+  -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: transparent !important;
+}

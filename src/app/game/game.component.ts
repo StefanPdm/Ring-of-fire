@@ -24,9 +24,9 @@ export class GameComponent {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((result: string) => {
-      console.log('The dialog was closed', result);
-      console.log('dialogRef', dialogRef);
-      this.game.players.push(result);
+      if (result && result.length > 0) {
+        this.game.players.push(result);
+      }
     });
   }
 
@@ -36,15 +36,15 @@ export class GameComponent {
 
   newGame() {
     this.game = new Game();
-    console.log(this.game);
   }
 
   takeCard() {
     if (!this.pickCardAnimation) {
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
-      console.log(this.currentCard);
-      console.log(this.game);
+      this.game.currentPlayer++;
+      this.game.currentPlayer =
+        this.game.currentPlayer % this.game.players.length;
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
       }, 1000);

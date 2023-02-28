@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-info',
   templateUrl: './game-info.component.html',
   styleUrls: ['./game-info.component.scss'],
 })
-export class GameInfoComponent implements OnInit {
+export class GameInfoComponent implements OnInit, OnChanges {
   cardAction = [
     {
       title: 'Waterfall',
@@ -15,7 +15,7 @@ export class GameInfoComponent implements OnInit {
     { title: 'You', description: 'You decide who drinks' },
     { title: 'Me', description: 'Congrats! Drink a shot!' },
     {
-      title: 'Category',
+      title: 'All',
       description:
         'Come up with a category (e.g. Colors). Each player must enumerate one item from the category.',
     },
@@ -34,13 +34,21 @@ export class GameInfoComponent implements OnInit {
       description:
         'Pick a mate. Your mate must always drink when you drink and the other way around.',
     },
-    { title: 'Thumbmaster', description: '' },
+    {
+      title: 'Thumbmaster',
+      description:
+        'The player who drew the card must put their thumb on the table at a chosen time (before the next five gets picked though, or they lose the right). The last person to put their thumb on the table must drink.',
+    },
     { title: 'Men', description: 'All men drink.' },
-    { title: 'Quizmaster', description: '' },
+    {
+      title: 'Quizmaster',
+      description:
+        'Ask someone a question. If there is no meaningful answer, he or she must drink.',
+    },
     {
       title: 'Never have i ever...',
       description:
-        'Say something you nnever did. Everyone who did it has to drink.',
+        'Say something you never did. Everyone who did it has to drink.',
     },
     {
       title: 'Rule',
@@ -53,7 +61,13 @@ export class GameInfoComponent implements OnInit {
   description: string = '';
   @Input() card: string = '';
 
-  ngOnInit() {
-    console.log('current card:', this.card);
+  ngOnInit() {}
+
+  ngOnChanges(): void {
+    if (this.card !== '') {
+      let cardNumber = +this.card.split('_')[1] - 1;
+      this.title = this.cardAction[cardNumber].title;
+      this.description = this.cardAction[cardNumber].description;
+    }
   }
 }

@@ -1,6 +1,7 @@
 .info-card {
   position: absolute;
   font-weight: 300;
+  font-size: 16px;
   bottom: 5%;
   left: 2%;
   right: calc(4% + 55px);
@@ -13,4 +14,9 @@
   -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
     4px 1px 10px 4px rgba(255, 255, 255, 0.31) inset;
   -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
+}
+
+mat-card-header {
+  font-weight: 700;
+  color: black !important;
 }
