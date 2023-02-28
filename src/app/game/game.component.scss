@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   max-height: 100%;
-  background-image: url("/assets/img/green_Background.jpeg");
+  background-image: url("/assets/img/green_Background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -73,6 +73,24 @@
     // right: 300px;
   }
 }
+@keyframes pick-card-animation-520 {
+  // in keyframes KEIn !important verwenden!!!!!!!!
+  0% {
+    scale: 1.05;
+    transform: translate(0, 0);
+  }
+  50% {
+    scale: 1.6;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: scale(1) translate(-30px, -165px) rotate(-10deg);
+    // transform: scale(1.1) rotate(10deg);
+    // top: 0;
+    // right: 300px;
+  }
+}
 
 .played-cards {
   // position: absolute;
@@ -105,4 +123,71 @@
   -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
     4px 1px 10px 4px rgba(255, 255, 255, 0.31) inset;
   -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
+}
+
+.jumping-button {
+  animation: jumpingButton 0.5s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes jumpingButton {
+  0% {
+    transform: translateY(0);
+  }
+  33% {
+    transform: translateY(-3px);
+  }
+  66% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (width <= 520px) {
+  .field {
+    justify-content: flex-start;
+  }
+
+  .card-stack {
+    margin-left: 20%;
+    margin-right: 80%;
+    margin-bottom: 125px;
+    img {
+      width: 90px;
+    }
+  }
+
+  .logo {
+    top: 2%;
+    left: 2%;
+    height: 2rem;
+    width: 300px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+
+  .btn-add {
+    bottom: 6%;
+    right: 5%;
+  }
+
+  .mdc-fab {
+    width: 30px;
+    height: 30px;
+  }
+
+  .played-cards {
+    // position: absolute;
+    left: 0px;
+    top: 21px;
+    transform-origin: left top;
+    transform: scale(1) translate(-30px, -165px) rotate(-10deg);
+  }
+
+  .pick-card {
+    animation: pick-card-animation-520 1s linear forwards;
+  }
 }

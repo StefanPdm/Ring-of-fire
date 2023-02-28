@@ -1,5 +1,6 @@
-<app-player *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + i * 85}"
-  class="player-position" [name]="player" [activePlayer]="i == game.currentPlayer"></app-player>
+<app-player *ngFor="let player of game.players; let i = index"
+  [ngStyle]="{'top.px': 50 + i * this.playerDistances}" class="player-position" [name]="player"
+  [activePlayer]="i == game.currentPlayer"></app-player>
 <div class="logo">Ring Of Fire</div>
 <div class="field">
   <div class="card-stack">
@@ -18,7 +19,8 @@
   </div>
 </div>
 
-<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+<button mat-fab color="primary" class="btn-add" (click)="openDialog()" id="btn-add"
+  [class.jumping-button]="game.players.length < 2">
   <mat-icon>add</mat-icon>
 </button>
 

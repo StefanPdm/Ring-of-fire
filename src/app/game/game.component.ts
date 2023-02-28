@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import {
   MatDialog,
@@ -12,11 +12,13 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
 })
-export class GameComponent {
+export class GameComponent implements OnInit, OnChanges {
   pickCardAnimation = false;
+  enoughPlayers: Boolean = false;
   game: Game | any;
   currentCard: string = '';
   newPlayerName: string = '';
+  playerDistances: number = 85;
 
   constructor(public dialog: MatDialog) {}
 
@@ -32,6 +34,18 @@ export class GameComponent {
 
   ngOnInit(): void {
     this.newGame();
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 520) {
+      this.playerDistances = 50;
+    }
+  }
+
+  ngOnChanges(): void {
+    if (window.innerWidth <= 520) {
+      this.playerDistances = 50;
+    } else {
+      this.playerDistances = 85;
+    }
   }
 
   newGame() {
@@ -39,7 +53,7 @@ export class GameComponent {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game.players.length > 1) {
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
       this.game.currentPlayer++;
@@ -51,6 +65,8 @@ export class GameComponent {
       setTimeout(() => {
         this.pickCardAnimation = false;
       }, 1100);
+    } else {
+      console.log('You can only have one card at a time.');
     }
   }
 }

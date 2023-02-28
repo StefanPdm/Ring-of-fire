@@ -20,3 +20,28 @@ mat-card-header {
   font-weight: 700;
   color: black !important;
 }
+
+@media (width <= 520px) {
+  .info-card {
+    font-weight: 200;
+    font-size: 13px;
+    bottom: 2%;
+  }
+  mat-card-header {
+    font-weight: 500;
+    color: black !important;
+  }
+
+  .mat-mdc-card-header {
+    padding: 4px 8px 0 8px;
+    line-height: 16px;
+  }
+
+  .mat-mdc-card-content {
+    display: block;
+    padding: 0 8px;
+  }
+  .mat-typography {
+    line-height: 16px;
+  }
+}
