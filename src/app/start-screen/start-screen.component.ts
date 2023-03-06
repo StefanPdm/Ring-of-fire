@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { Router } from '@angular/router';
+import { Game } from 'src/models/game';
 
 @Component({
   selector: 'app-start-screen',
@@ -7,10 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./start-screen.component.scss'],
 })
 export class StartScreenComponent {
-  constructor(private router: Router) {}
+  game: any;
+  constructor(private router: Router, private firestore: AngularFirestore) {}
 
   newGame() {
     // start Game
-    this.router.navigateByUrl('/game');
+    let game = new Game();
+
+    this.firestore
+      .collection('games')
+      .add(game.toJson())
+      .then((gameInfo: any) => {
+        // console.log('Gameinfo:', gameInfo);
+        this.router.navigateByUrl('/game/' + gameInfo.id);
+      });
   }
 }

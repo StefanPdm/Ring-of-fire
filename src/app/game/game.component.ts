@@ -1,11 +1,9 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -13,14 +11,18 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit, OnChanges {
-  pickCardAnimation = false;
   enoughPlayers: Boolean = false;
   game: Game | any;
-  currentCard: string = '';
+
   newPlayerName: string = '';
   playerDistances: number = 85;
+  gameID: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    private firestore: AngularFirestore,
+    public dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
@@ -28,16 +30,35 @@ export class GameComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result && result.length > 0) {
         this.game.players.push(result);
+        this.saveGame();
       }
     });
   }
 
   ngOnInit(): void {
     this.newGame();
-    console.log(window.innerWidth);
     if (window.innerWidth <= 520) {
       this.playerDistances = 50;
     }
+
+    this.route.params.subscribe((params) => {
+      // console.log('params:', params['id']);
+      // console.log('params2:', this.route.params);
+      this.gameID = params['id'];
+      this.firestore
+        .collection('games')
+        .doc(params['id'])
+        .valueChanges()
+        .subscribe((games: Game) => {
+          // console.log('actual game:', games);
+          this.game.players = games.players;
+          this.game.stack = games.stack;
+          this.game.playedCards = games.playedCards;
+          this.game.currentPlayer = games.currentPlayer;
+          this.game.pickCardAnimation = games.pickCardAnimation;
+          this.game.currentCard = games.currentCard;
+        });
+    });
   }
 
   ngOnChanges(): void {
@@ -53,20 +74,30 @@ export class GameComponent implements OnInit, OnChanges {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation && this.game.players.length > 1) {
-      this.currentCard = this.game.stack.pop();
-      this.pickCardAnimation = true;
+    if (!this.game.pickCardAnimation && this.game.players.length > 1) {
+      this.game.currentCard = this.game.stack.pop();
+      this.game.pickCardAnimation = true;
+      this.saveGame();
       this.game.currentPlayer++;
       this.game.currentPlayer =
         this.game.currentPlayer % this.game.players.length;
+      this.saveGame();
       setTimeout(() => {
-        this.game.playedCards.push(this.currentCard);
+        this.game.playedCards.push(this.game.currentCard);
+        // this.saveGame();
       }, 1000);
       setTimeout(() => {
-        this.pickCardAnimation = false;
+        this.game.pickCardAnimation = false;
+        this.saveGame();
       }, 1100);
-    } else {
-      console.log('You can only have one card at a time.');
     }
+    // this.saveGame();
+  }
+
+  saveGame() {
+    this.firestore
+      .collection('games')
+      .doc(this.gameID)
+      .update(this.game.toJson());
   }
 }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sh-ringoffire": {
+      "hosting": {
+        "ringoffire": [
+          "sh-ringoffire"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sh-ringoffire"
+  }
+}

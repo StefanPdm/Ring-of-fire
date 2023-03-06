@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   max-height: 100%;
-  background-image: url("/assets/img/green_Background.jpg");
+  background-image: url("^assets/img/green_Background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -53,43 +53,6 @@
 .pick-card {
   animation: pick-card-animation 1s linear forwards;
   cursor: pointer;
-}
-
-@keyframes pick-card-animation {
-  // in keyframes KEIn !important verwenden!!!!!!!!
-  0% {
-    scale: 1.05;
-    transform: translate(0, 0);
-  }
-  50% {
-    scale: 1.6;
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: scale(1.1) translate(-200px, -300px) rotate(-10deg);
-    // transform: scale(1.1) rotate(10deg);
-    // top: 0;
-    // right: 300px;
-  }
-}
-@keyframes pick-card-animation-520 {
-  // in keyframes KEIn !important verwenden!!!!!!!!
-  0% {
-    scale: 1.05;
-    transform: translate(0, 0);
-  }
-  50% {
-    scale: 1.6;
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: scale(1) translate(-30px, -165px) rotate(-10deg);
-    // transform: scale(1.1) rotate(10deg);
-    // top: 0;
-    // right: 300px;
-  }
 }
 
 .played-cards {
@@ -145,7 +108,41 @@
   }
 }
 
-@media (width <= 520px) {
+@media screen and (min-width: 521px) {
+  @keyframes pick-card-animation {
+    // in keyframes KEIn !important verwenden!!!!!!!!
+    0% {
+      scale: 1.05;
+      transform: translate(0, 0);
+    }
+    50% {
+      scale: 1.6;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: scale(1.1) translate(-200px, -300px) rotate(-10deg);
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  @keyframes pick-card-animation {
+    // in keyframes KEIn !important verwenden!!!!!!!!
+    0% {
+      scale: 1.05;
+      transform: translate(0, 0);
+    }
+    50% {
+      scale: 1.6;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: scale(1) translate(-30px, -165px) rotate(-10deg);
+    }
+  }
+
   .field {
     justify-content: flex-start;
   }
@@ -170,7 +167,7 @@
   }
 
   .btn-add {
-    bottom: 6%;
+    bottom: 3%;
     right: 5%;
   }
 
@@ -187,7 +184,19 @@
     transform: scale(1) translate(-30px, -165px) rotate(-10deg);
   }
 
-  .pick-card {
-    animation: pick-card-animation-520 1s linear forwards;
+  @keyframes pick-card-animation {
+    // in keyframes KEIn !important verwenden!!!!!!!!
+    0% {
+      scale: 1.05;
+      transform: translate(0, 0);
+    }
+    50% {
+      scale: 1.6;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: scale(1) translate(-30px, -165px) rotate(-10deg);
+    }
   }
 }

@@ -1,8 +1,10 @@
 export class Game {
-  public players: string[] = [];
+  public players: string[] = ['bob', 'alice', 'carol', 'ted'];
   public stack: string[] = [];
   public playedCards: string[] = [];
   public currentPlayer: number = -1;
+  public pickCardAnimation = false;
+  public currentCard: string = '';
 
   constructor() {
     for (let i = 1; i < 14; i++) {
@@ -13,11 +15,22 @@ export class Game {
     }
     shuffle(this.stack);
   }
+
+  public toJson(): object {
+    return {
+      players: this.players,
+      stack: this.stack,
+      playedCards: this.playedCards,
+      currentPlayer: this.currentPlayer,
+      pickCardAnimation: this.pickCardAnimation,
+      currentCard: this.currentCard,
+    };
+  }
 }
 
 function shuffle(array: any[]) {
   let currentIndex = array.length,
-    randomIndex;
+    randomIndex: number;
 
   // While there remain elements to shuffle.
   while (currentIndex != 0) {
