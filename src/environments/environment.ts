@@ -6,4 +6,7 @@ export const environment = {
     apiKey: 'AIzaSyCahAXvcM4rqAvogF5F7HXLmlymcXDdPxU',
     authDomain: 'sh-ringoffire.firebaseapp.com',
     messagingSenderId: '1019648838754',
-  },};
+    databaseURL:
+      'https://sh-ringoffire-default-rtdb.europe-west1.firebasedatabase.app',
+  },
+};

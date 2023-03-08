@@ -1,7 +1,7 @@
 .player {
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 190px;
   height: 50px;
   font-size: 16px;
   font-weight: 700;
@@ -18,17 +18,36 @@
   -webkit-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
     4px 1px 10px 4px rgba(255, 255, 255, 0.51) inset;
   -moz-box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34);
-  transform: translateX(140px);
+  transform: translateX(130px);
   transition: all 0.225s ease-in-out;
+  cursor: pointer;
+
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &:hover {
+    box-shadow: -7px 6px 8px 0px rgba(0, 0, 0, 0.34),
+      7px 1px 10px 7px rgba(135, 133, 133, 0.51) inset;
+    color: #c7d9bf;
+  }
+
   img {
     width: 70px;
     height: 70px;
     margin-left: -25px;
     object-fit: cover;
     border-radius: 100%;
-    filter: grayscale(100%) invert(100%);
-    -webkit-filter: grayscale(100%) invert(100%);
-    -moz-filter: grayscale(100%);
+    // filter: grayscale(100%) invert(100%);
+    // -webkit-filter: grayscale(100%) invert(100%);
+    // -moz-filter: grayscale(100%);
+    transition: all 225ms ease-in-out;
+
+    &:hover {
+      scale: 1.1;
+      // filter: grayscale(50%) invert(100%);
+    }
   }
 
   img:first-child {
@@ -69,9 +88,9 @@
       margin-left: -25px;
       object-fit: cover;
       border-radius: 100%;
-      filter: grayscale(100%) invert(100%);
-      -webkit-filter: grayscale(100%) invert(100%);
-      -moz-filter: grayscale(100%);
+      // filter: grayscale(100%) invert(100%);
+      // -webkit-filter: grayscale(100%) invert(100%);
+      // -moz-filter: grayscale(100%);
     }
 
     img:first-child {

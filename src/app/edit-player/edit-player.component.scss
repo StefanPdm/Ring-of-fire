@@ -1,0 +1,35 @@
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+}
+
+.avatar-container {
+  display: flex;
+  gap: 4px;
+}
+.edit-player-img {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 100%;
+  // filter: grayscale(100%) invert(100%);
+  // -webkit-filter: grayscale(100%) invert(100%);
+  // -moz-filter: grayscale(100%);
+  transition: all 0.225s ease-in-out;
+  background: radial-gradient(white, white, rgb(96, 95, 95));
+
+  &:hover {
+    scale: 1.3;
+    // filter: grayscale(50%) invert(100%);
+  }
+}
+
+@media (width <= 520px) {
+  .edit-player-img {
+    height: 35px;
+    width: 35px;
+  }
+}

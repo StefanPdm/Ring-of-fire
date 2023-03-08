@@ -26,7 +26,6 @@
   font-weight: bold;
   text-shadow: 9px 7px 10px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
-  // -webkit-text-stroke: 0.1px black;
 }
 
 .card-stack {
@@ -38,8 +37,8 @@
 
     &:nth-child(5):hover {
       cursor: pointer;
-      transform: translate(3%, 5%);
-      transform-origin: left top;
+      transform: translate(-6%, 5%);
+      transform-origin: right top;
       scale: 1.05;
       transition: all 0.2s ease-in-out;
     }
@@ -105,6 +104,44 @@
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+.game-over {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  // height: 90%;
+  font-size: 1vw;
+  font-weight: 800;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 9px 7px 10px rgba(0, 0, 0, 0.7);
+  animation: zoom 0.5s linear forwards;
+  cursor: pointer;
+
+  &:hover::before {
+    content: "Click for new game";
+    position: absolute;
+    font-size: 3vw;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: red;
+    // rotate: -30deg;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    font-size: 1vw;
+  }
+  100% {
+    font-size: 12vw;
   }
 }
 

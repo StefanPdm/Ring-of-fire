@@ -1,0 +1,15 @@
+<div class="edit-container">
+  <!-- <label for="editedName">1. Edit your name:</label>
+  <input type="text" name="editedName"> -->
+  <span>Choose your profile pic:</span>
+  <div class="avatar-container">
+    <img class="edit-player-img" [mat-dialog-close]="img" *ngFor="let img of allProfilePictures"
+      src="{{img}}" alt="">
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <!-- <button mat-button [mat-dialog-close]="">Save</button> -->
+    <button mat-button [mat-dialog-close]="'DELETE'" color="warn">Delete Player</button>
+  </div>
+</div>
