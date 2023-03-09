@@ -22,6 +22,7 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { EditPlayerComponent } from './edit-player/edit-player.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [

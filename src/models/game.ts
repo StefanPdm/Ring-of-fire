@@ -1,9 +1,6 @@
 export class Game {
-  public players: string[] = ['Bob', 'Alice'];
-  public playerImages: string[] = [
-    'assets/img/profile/1.png',
-    'assets/img/profile/2.png',
-  ];
+  public players: string[] = [];
+  public playerImages: string[] = [];
   public stack: string[] = [];
   public playedCards: string[] = [];
   public currentPlayer: number = -1;
@@ -12,7 +9,7 @@ export class Game {
 
   constructor() {
     // i < 14
-    for (let i = 1; i < 2; i++) {
+    for (let i = 1; i < 14; i++) {
       this.stack.push(`clubs_${i}`);
       this.stack.push(`diamonds_${i}`);
       this.stack.push(`hearts_${i}`);

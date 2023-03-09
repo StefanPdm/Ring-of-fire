@@ -8,7 +8,7 @@ import { Game } from 'src/models/game';
   styleUrls: ['./edit-player.component.scss'],
 })
 export class EditPlayerComponent {
-  allProfilePictures = [
+  public allProfilePictures = [
     'assets/img/profile/1.png',
     'assets/img/profile/2.png',
     'assets/img/profile/3.png',

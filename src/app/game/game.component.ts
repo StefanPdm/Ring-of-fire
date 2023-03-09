@@ -20,6 +20,7 @@ export class GameComponent implements OnInit, OnChanges {
   playerDistances: number = 85;
   gameID: string;
   gameOver: boolean = false;
+  randomIndex: number = 1;
 
   constructor(
     private firestore: AngularFirestore,
@@ -27,6 +28,14 @@ export class GameComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  // public allProfilePictures: string[];
+  // editedName: string;
+  // selectNewPlayerImg(): void {
+  //   throw new Error('Method not implemented.');
+  // }
+  // onNoClick(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   openDialog(): void {
     if (this.game.players.length >= 7) {
@@ -37,8 +46,16 @@ export class GameComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result && result.length > 0) {
         this.game.players.push(result);
-        this.game.playerImages.push('assets/img/profile/1.png');
+
+        this.game.playerImages.push(
+          `assets/img/profile/${this.randomIndex}.png`
+        );
         this.saveGame();
+        if (this.randomIndex < 6) {
+          this.randomIndex++;
+        } else {
+          this.randomIndex = 1;
+        }
       }
     });
   }
