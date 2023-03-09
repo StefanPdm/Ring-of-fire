@@ -49,3 +49,4 @@ Thumbs.db
 # Environment variables
 /src/environments
 src/environments
+/environments
